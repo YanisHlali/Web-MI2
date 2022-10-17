@@ -1,0 +1,11 @@
+
+
+li {
+    display: inline-block;
+    list-style-type: none;
+}
+
+.description-generale-1 {
+    width: 90%;
+    margin: 0 auto;
+}
