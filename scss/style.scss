@@ -1,0 +1,15 @@
+$class : "petite", "standard", "moyenne", "grande";
+
+@mixin MixinLargeur($largeur) {
+    width: $largeur;
+}
+
+@mixin MixinTaille($class) {
+    @for $i from 1 through 4 {
+        .taille-#{nth($class, $i)} {
+            @include MixinLargeur(25% * $i);
+        }
+    }
+}
+
+@include MixinTaille($class);
