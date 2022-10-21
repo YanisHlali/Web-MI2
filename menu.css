@@ -4,13 +4,15 @@
 }
 
 header {
+    top: 0;
+    position: sticky;
     height: 80px;
     background-color: #343434;
+    width: 100%;
 }
 
 header h1 {
-    line-height: 80px;
-    margin-left: 20px;
+    padding: 10px;
     font-family: "Roboto", sans-serif;
     color: white;
 }
