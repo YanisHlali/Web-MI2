@@ -18,6 +18,11 @@ table tr.header td {
     text-decoration: underline;
 }
 
+tr:nth-child(even) {
+    background-color: #343434;
+    color: white;
+}
+
 td {
     text-align: center;
     font-family: "Roboto", sans-serif;
