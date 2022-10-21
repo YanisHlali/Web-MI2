@@ -26,3 +26,9 @@ img {
     width: 50%;
     height: auto;
 }
+
+form {
+    border: 2px solid red;
+    width: 50%;
+    margin: 0 auto;
+}

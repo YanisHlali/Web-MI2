@@ -7,8 +7,9 @@
     <title>Destinations</title>
     <link rel="stylesheet" href="./destinations.css">
     <link rel="stylesheet" href="../menu.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
-<body>
+<body onload="test()">
     <header>
         <h1>Destinations</h1>
       </header>
@@ -25,29 +26,46 @@
       <br />
     <table>
         <tr class="header">
-            <td>Pays</td>
+            <td onclick="test()">Pays</td>
             <td>Circuit</td>
             <td>Tarif</td>
             <td>Réservation</td>
         </tr>
         <tr>
-            <td>Espagne</td>
-            <td><img src="images/espagne.jpg" /></td>
-            <td>Circuit plage, hôtel 4*, Lorem ipsum</td>
-            <td>800 €</td>
+            <td id="pays"></td>
+            <td id="circuit"></td>
+            <td id="tarif"></td>
+            <td id="reservation"></td>
         </tr>
         <tr>
-            <td>Maroc</td>
-            <td><img src="images/maroc.jpg" /></td>
-            <td>Circuit oasis, hôtel 4*, Lorem ipsum</td>
-            <td >1000 €</td>
+            <td id="pays"></td>
+            <td id="circuit"></td>
+            <td id="tarif"></td>
+            <td id="reservation"></td>
         </tr>
         <tr>
-            <td>Brésil</td>
-            <td><img src="images/bresil.jpg" /></td>
-            <td>Circuit favellas, hôtel 4*, Lorem ipsum</td>
-            <td>2000 €</td>
+            <td id="pays"></td>
+            <td id="circuit"></td>
+            <td id="tarif"></td>
+            <td id="reservation"></td>
         </tr>
     </table>
+
+    <form>
+        <label>Pays</label><br />
+        <input type="text" id="pays" name="pays" /><br />
+        <br /><br />
+        <label>Tarif</label><br />
+        <input type="text" id="tarif" name="tarif" /><br />
+        <br /><br />
+        <label>Réservation</label><br />
+        <input type="text" id="reservation" name="reservation" /><br />
+        <br /><br />
+        <input type="submit" value="Envoyer" />
+    </form>
+    <br />    <br />    <br />    <br />    <br />    <br />    
+
+    <script src="destinations.json"></script>
+    <script src="destinations.js"></script>
 </body>
 </html>
