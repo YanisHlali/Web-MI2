@@ -3,18 +3,6 @@
     padding: 0;
 }
 
-header {
-    height: 80px;
-    background-color: #343434;
-}
-
-header h1 {
-    line-height: 80px;
-    margin-left: 20px;
-    font-family: "Roboto", sans-serif;
-    color: white;
-}
-
 .div-container, .div-container h2, .div-container p, .div-container-1  {
     background-color: #343434;
 }

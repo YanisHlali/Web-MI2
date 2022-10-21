@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    z-index: 1;
 }
 
 header {
@@ -51,6 +52,7 @@ li a {
     float: none;
     width: 100%;
     text-align: left;
+    padding: 5px;
 }
 
 .sous-menu a {
@@ -58,7 +60,7 @@ li a {
     border-bottom: none;
 }
 
-.sous-menu a:hover {
+.sous-menu a:hover  {
     border-bottom: none;
     background-color: #343434;
 }
@@ -66,7 +68,6 @@ li a {
 li.menu > a::after {
     content: "▼";
     font-size: 10px;
-    margin-left: 5px;
 }
 
 nav.menu > ul li:hover .sous-menu {
