@@ -1,17 +1,25 @@
 table {
     width: 100%;
-    border: 1px solid red;
+    border-collapse: collapse;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 table tr.header td {
     text-align: center;
     width: 25%;
-    font-weight: bold;
+    height: 35px;
+    font-family: "Roboto", sans-serif;
+    font-size: 25px;
+    text-decoration: underline;
 }
 
 td {
-    border: 1px solid blue;
     text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    height: 0px;
+    border-bottom: 2px solid black;
 }
 
 img {

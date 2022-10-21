@@ -1,0 +1,36 @@
+.audios {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.audio {
+    display: inline-block;
+    width: 49%;
+    margin: 0 auto;
+}
+
+.audio h2 {
+    font-family: "Roboto", sans-serif;
+    font-size: 30px;
+    text-align: center;
+    padding: 10px;
+}
+
+.audio audio {
+    display: block;
+    padding: 10px;  
+    margin: 0 auto;
+}
+
+.audio p {
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
+    text-align: justify;
+    width: 90%;
+}
+
+#border-right-seperator {
+    border-right: 4px solid #343434;
+}

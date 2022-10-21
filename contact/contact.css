@@ -1,0 +1,50 @@
+.moitie {
+    display: inline-block;
+    width: 100%;
+}
+
+.moitie-gauche, .moitie-droite {
+    display: inline-block;
+    width: 49%;
+}
+
+input {
+    width: 50%;
+    font-size: 20px;
+    font-family: "Roboto", sans-serif;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    height: 40px;
+    padding: 5px;
+    border-left: none;
+    border-top: none;
+    border-right: none; 
+    border-bottom: 3px solid black;
+    outline: none;
+}
+
+div.textarea {
+    width: 33%;
+    margin: 0 auto;
+}
+
+textarea {
+    margin: 0 auto;
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    outline: none;
+    padding: 10px;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    background-color: black;
+    color: white;
+}

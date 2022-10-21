@@ -1,11 +1,50 @@
-
-
-li {
-    display: inline-block;
-    list-style-type: none;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-.description-generale-1 {
+header {
+    height: 80px;
+    background-color: #343434;
+}
+
+header h1 {
+    line-height: 80px;
+    margin-left: 20px;
+    font-family: "Roboto", sans-serif;
+    color: white;
+}
+
+.div-container, .div-container h2, .div-container p, .div-container-1  {
+    background-color: #343434;
+}
+
+.div-container, .div-container h2, .div-container-3 {
+    border-radius: 10px;
+}
+
+.div-container {
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+    margin-left: 100px;
+    margin-top: 60px;
+    padding: 20px;
+}
+
+.div-container h2 {
+    font-size: 30px;
+    font-family: "Lato", sans-serif;
+    color: white;
+    padding: 10px;
+}
+
+.div-container-paragraphe {
     width: 90%;
     margin: 0 auto;
+    text-align: justify;
+    margin: 10px;
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+    color: white;
 }

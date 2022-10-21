@@ -6,53 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Voyage virtuel audio</title>
     <link rel="stylesheet" href="../menu.css">
+    <link rel="stylesheet" href="voyage_virtuel_audio.css">
   </head>
   <body>
-    <h1>Voyage virtuel audio</h1>
-    <hr />
-    <h1>Menu</h1>
-    <nav>
+    <header>
+      <h1>Voyage virtuel audio</h1>
+    </header>
+    <nav class="menu">
       <ul>
-        <li><a href="../index.html">Accueil</a></li>
-        <li><a href="../perso/perso.html">Espace perso</a></li>
-        <li><a href="../destinations/destinations.html">Destinations</a></li>
-        <li><a href="../voyage_virtuel_audio/voyage_virtuel_audio.html">Voyage virtuel audio</a></li>
-        <li><a href="../voyage_virtuel_video/voyage_virtuel_video.html">Voyage virtuel vidéo</a></li>
-        <li><a href="../contact/contact.html">Contact</a></li>
+        <li class="menu"><a href="../index.html">Accueil</a></li>
+        <li class="menu"><a href="../perso/perso.html">Espace perso</a></li>
+        <li class="menu"><a href="../destinations/destinations.html">Destinations</a></li>
+        <li class="menu"><a href="../voyage_virtuel_audio/voyage_virtuel_audio.html">Voyage virtuel audio</a></li>
+        <li class="menu"><a href="../voyage_virtuel_video/voyage_virtuel_video.html">Voyage virtuel vidéo</a></li>
+        <li class="menu"><a href="../contact/contact.html">Contact</a></li>
       </ul>
     </nav>
+    <br />
 
-    <div class="audio">
-      <h2>Voyage n°1</h2>
-      <audio controls preload="auto" autoplay="autoplay" loop="loop">
-        <source src="audio/voyage_1.mp3" type="audio/mpeg"/>
-        Your browser does not support the audio element.
-      </audio>
-      <p>Description bla bla bla</p>
+    <div class="audios">
+      <div class="audio" id="border-right-seperator">
+        <h2>Voyage n°1</h2>
+        <br />
+        <audio controls preload="auto" autoplay="autoplay" loop="loop">
+          <source src="audio/voyage_1.mp3" type="audio/mpeg"/>
+          Your browser does not support the audio element.
+        </audio>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id tellus dui. Duis vitae interdum leo. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+      </div>
+      <div class="audio">
+        <h2>Voyage n°2</h2>
+        <br />
+        <audio controls>
+          <source src="audio/voyage_2.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id tellus dui. Duis vitae interdum leo. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+      </div>
     </div>
-    <div class="audio">
-      <h2>Voyage n°2</h2>
-      <audio controls>
-        <source src="audio/voyage_2.mp3" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-      <p>Description bla bla bla</p>
-    </div>
-    <div class="audio">
-      <h2>Voyage n°3</h2>
-      <audio controls>
-        <source src="audio/voyage_3.mp3" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-      <p>Description bla bla bla</p>
-    </div>
-    <div class="audio">
-      <h2>Voyage n°4</h2>
-      <audio controls>
-        <source src="audio/voyage_4.mp3" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-      <p>Description bla bla bla</p>
+    <div class="audios">
+      <div class="audio" id="border-right-seperator">
+        <h2>Voyage n°3</h2>
+        <br />
+        <audio controls>
+          <source src="audio/voyage_3.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id tellus dui. Duis vitae interdum leo. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+      </div>
+      <div class="audio">
+        <h2>Voyage n°4</h2>
+        <br />
+        <audio controls>
+          <source src="audio/voyage_4.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id tellus dui. Duis vitae interdum leo. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+      </div>
     </div>
   </body>
 </html>

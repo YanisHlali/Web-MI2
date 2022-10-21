@@ -2,3 +2,35 @@ video {
     width: 33%;
     height: auto;
 }
+
+.video {
+    display: inline-block;
+    width: 49%;
+    margin: 0 auto;
+}
+
+.video h2 {
+    font-family: "Roboto", sans-serif;
+    font-size: 30px;
+    text-align: center;
+    padding: 10px;
+}
+
+.video video {
+    display: block;
+    padding: 10px;  
+    margin: 0 auto;
+}
+
+.video p {
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
+    text-align: justify;
+    width: 90%;
+}
+
+#border-right-seperator {
+    border-right: 4px solid #343434;
+}
