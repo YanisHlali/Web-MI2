@@ -24,7 +24,7 @@
         </ul>
       </nav>
       <br />
-    <table>
+    <table id="table">
         <tr class="header">
             <td onclick="test()">Pays</td>
             <td>Circuit</td>
@@ -53,19 +53,21 @@
 
     <form>
         <label>Pays</label><br />
-        <input type="text" id="pays" name="pays" /><br />
+        <input type="text" id="nouveauPays" name="pays" /><br />
+        <br /><br />
+        <label>Circuit</label><br />
+        <input type="file" id="circuit" name="circuit">
         <br /><br />
         <label>Tarif</label><br />
-        <input type="text" id="tarif" name="tarif" /><br />
+        <input type="text" id="nouveauTarif" name="tarif" /><br />
         <br /><br />
         <label>Réservation</label><br />
-        <input type="text" id="reservation" name="reservation" /><br />
+        <input type="text" id="nouvelleReservation" name="reservation" /><br />
         <br /><br />
-        <input type="submit" value="Envoyer" />
+        <input class="bouton" id="nouvelleDestination" value="Envoyer" readonly/>
     </form>
     <br />    <br />    <br />    <br />    <br />    <br />    
 
-    <script src="destinations.json"></script>
     <script src="destinations.js"></script>
 </body>
 </html>

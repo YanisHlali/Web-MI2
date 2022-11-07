@@ -32,3 +32,16 @@ form {
     width: 50%;
     margin: 0 auto;
 }
+
+form input.bouton {
+    outline:none;
+    cursor:pointer;
+    text-align: center;
+    font-size:20px;
+}
+
+form label {
+    font-size: 20px;
+    font-family: "Roboto", sans-serif;
+    
+}
