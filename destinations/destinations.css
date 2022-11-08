@@ -1,47 +1,71 @@
 table {
-    width: 100%;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
     border-collapse: collapse;
-    display: flex;
-    flex-wrap: wrap;
 }
 
 table tr.header td {
+    width: 20%;
+    height: 70px;
     text-align: center;
-    width: 25%;
-    height: 35px;
     font-family: "Roboto", sans-serif;
     font-size: 25px;
-    text-decoration: underline;
+    background-color: #343434;
+    color: white;
 }
 
 td {
+    width: 20%;
+    height: 180px;
     text-align: center;
     font-family: "Roboto", sans-serif;
     font-size: 20px;
-    height: 0px;
     border-bottom: 2px solid black;
 }
 
+tr.sombre td {
+    background-color: #343434;
+    color: white;
+
+}
+
 img {
-    width: 50%;
-    height: auto;
+    width: 100%;
+    height: 20vh;
 }
 
 form {
-    border: 2px solid red;
-    width: 50%;
+    width: 90%;
     margin: 0 auto;
 }
 
-form input.bouton {
-    outline:none;
-    cursor:pointer;
-    text-align: center;
-    font-size:20px;
-}
-
-form label {
+form input {
+    width: 75%;
     font-size: 20px;
     font-family: "Roboto", sans-serif;
-    
+    height: 40px;
+    padding: 5px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border-left: none;
+    border-top: none;
+    border-right: none; 
+    border-bottom: 3px solid black;
+    outline: none;
+}
+
+form table tr td {
+    border-bottom: none;
+}
+
+input.submit {
+    width: 35%;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+input.submit:hover {
+    background-color: black;
+    color: white;
 }

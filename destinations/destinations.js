@@ -1,54 +1,45 @@
 var destinations = {
-     destination1: {
-          pays: "Espagne",
-          tarif: "Circuit plage, hôtel 4*, Lorem ipsum",
-          reservation: "800€",
-     },
-     destination2: {
-          pays: "Maroc",
-          tarif: "Circuit montagne, hôtel 3*, Lorem ipsum",
-          reservation: "1000",
-     },
-     destination3: {
-          pays: "Brésil",
-          tarif: "Circuit ville, hôtel 4*, Lorem ipsum",
-          reservation: "2000",
+     destination0: {
+          pays: "XXXXXXX",
+          tarif: "XXXXX XXXXX XXXXX XXXXX",
+          reservation: "XXXX",
      },
 };
 
 function test() {
-     document
-          .getElementById("nouvelleDestination")
-          .addEventListener("click", () => {
-               let totalDestinations = Object.keys(destinations).length;
-               totalDestinations++;
-               let pays = document.getElementById("nouveauPays").value;
-               let tarif = document.getElementById("nouveauTarif").value;
-               let reservation = document.getElementById(
-                    "nouvelleReservation"
-               ).value;
+     let allTd = document.querySelectorAll("td");
+     if (allTd.length == 9) {
+          creerSectionVide();
+     }
 
-               let nouvelleDestination = {
-                    pays: pays,
-                    tarif: tarif,
-                    reservation: reservation,
-               };
+     let nouvelleDestination = document.getElementById("nouvelleDestination");
+     nouvelleDestination.addEventListener("click", () => {
+          let totalDestinations = Object.keys(destinations).length;
+          totalDestinations++;
+          let pays = document.getElementById("nouveauPays").value;
+          let tarif = document.getElementById("nouveauTarif").value;
+          let reservation = document.getElementById(
+               "nouvelleReservation"
+          ).value;
 
-               nettoyerFormulaire();
+          let nouvelleDestination = {
+               pays: pays,
+               tarif: tarif,
+               reservation: reservation,
+          };
 
-               destinations[`destination${totalDestinations}`] =
-                    nouvelleDestination;
+          nettoyerFormulaire();
 
-               creerNouvelleSection();
-          });
+          destinations[`destination${totalDestinations - 1}`] =
+               nouvelleDestination;
 
-     afficherPays();
-     afficherTarif();
-     afficherReservation();
+          creerNouvelleSection();
+     });
 }
 
 function previewFiles(id) {
-     const imgOutput = document.querySelector(`#${id}`);
+     const imgOutput = document.querySelector(id);
+
      const file = document.querySelector("input[type=file]").files[0];
      const reader = new FileReader();
 
@@ -66,29 +57,78 @@ function previewFiles(id) {
      }
 }
 
-function creerNouvelleSection() {
+function creerTableau() {
      let totalDestinations = Object.keys(destinations).length;
 
      let tr = document.createElement("tr");
+     if (sombreOuClaire() != "sombre") tr.className = "sombre";
+     tr.id = `destination${totalDestinations}`;
+
      let tdPays = document.createElement("td");
-     tdPays.setAttribute("id", "pays");
      let tdCircuit = document.createElement("td");
-     tdCircuit.setAttribute("id", `circuit_${totalDestinations}`);
      let tdTarif = document.createElement("td");
-     tdTarif.setAttribute("id", "tarif");
      let tdReservation = document.createElement("td");
+     let tdBoutons = document.createElement("td");
+
+     let img = document.createElement("img");
+     let boutons = document.createElement("button");
+     boutons.textContent = "Supprimer";
+
+     tdPays.setAttribute("id", "pays");
+     tdCircuit.setAttribute("id", "circuit");
+     img.setAttribute("id", `circuit_${totalDestinations}`);
+     tdTarif.setAttribute("id", "tarif");
      tdReservation.setAttribute("id", "reservation");
+
+     tdCircuit.append(img);
+     tdBoutons.append(boutons);
      tr.append(tdPays);
      tr.append(tdCircuit);
      tr.append(tdTarif);
      tr.append(tdReservation);
+     tr.append(tdBoutons);
+
      document.querySelector("tbody").appendChild(tr);
+}
 
-     previewFiles(`circuit_${totalDestinations}`);
+function creerNouvelleSection() {
+     let totalDestinations = Object.keys(destinations).length;
 
+     creerTableau();
      afficherPays();
      afficherTarif();
      afficherReservation();
+
+     let boutons = document.querySelectorAll("button");
+     console.log(boutons);
+     for (let i = 0; i < boutons.length; i++) {
+          boutons[i].addEventListener("click", () => {
+               supprimerDestination(`destination${i}`);
+          });
+     }
+
+     previewFiles(`#circuit_${totalDestinations}`);
+}
+
+function creerSectionVide() {
+     creerTableau();
+     let allTdPays = document.querySelectorAll("#pays");
+     let allTdTarif = document.querySelectorAll("#tarif");
+     let allTdReservation = document.querySelectorAll("#reservation");
+
+     for (let i = 0; i < allTdPays.length; i++) {
+          allTdPays[i].textContent = "XXXXXXX";
+          allTdTarif[i].textContent = "XXXXX XXXXX XXXXX XXXXX";
+          allTdReservation[i].textContent = "XXXX";
+     }
+     afficherPays();
+     afficherTarif();
+     afficherReservation();
+}
+
+function supprimerDestination(id) {
+     let elementASupprimer = document.getElementById(id);
+     elementASupprimer.remove();
 }
 
 function nettoyerFormulaire() {
@@ -98,48 +138,57 @@ function nettoyerFormulaire() {
 }
 
 function afficherPays() {
-     let totalDestinations = Object.keys(destinations).length;
+     let pays = document.querySelectorAll("#pays");
 
      let paysReservation = [];
 
-     for (let i = 1; i < totalDestinations + 1; i++) {
+     for (let i = 0; i < pays.length; i++) {
+          console.log(destinations);
           paysReservation.push(destinations[`destination${i}`].pays);
      }
-
-     let pays = document.querySelectorAll("#pays");
      for (let i = 0; i < paysReservation.length; i++) {
           pays[i].textContent = paysReservation[i];
      }
 }
 
 function afficherTarif() {
-     let totalDestinations = Object.keys(destinations).length;
+     let tarif = document.querySelectorAll("#tarif");
 
      let tarifReservation = [];
 
-     for (let i = 1; i < totalDestinations + 1; i++) {
+     for (let i = 0; i < tarif.length; i++) {
           tarifReservation.push(destinations[`destination${i}`].tarif);
      }
 
-     let tarif = document.querySelectorAll("#tarif");
      for (let i = 0; i < tarifReservation.length; i++) {
           tarif[i].textContent = tarifReservation[i];
      }
 }
 
 function afficherReservation() {
-     let totalDestinations = Object.keys(destinations).length;
+     let reservation = document.querySelectorAll("#reservation");
 
      let reservationReservation = [];
 
-     for (let i = 1; i < totalDestinations + 1; i++) {
+     for (let i = 0; i < reservation.length; i++) {
           reservationReservation.push(
                destinations[`destination${i}`].reservation
           );
      }
 
-     let reservation = document.querySelectorAll("#reservation");
      for (let i = 0; i < reservationReservation.length; i++) {
           reservation[i].textContent = reservationReservation[i];
+     }
+}
+
+function sombreOuClaire() {
+     let allTr = document.querySelectorAll("tr");
+     if (
+          allTr[allTr.length - 2].className == "sombre" ||
+          allTr[allTr.length - 2].className == "header"
+     ) {
+          return "sombre";
+     } else {
+          return "claire";
      }
 }
