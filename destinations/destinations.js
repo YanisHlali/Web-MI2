@@ -1,17 +1,6 @@
-var destinations = {
-     destination0: {
-          pays: "XXXXXXX",
-          tarif: "XXXXX XXXXX XXXXX XXXXX",
-          reservation: "XXXX",
-     },
-};
+var destinations = {};
 
 function test() {
-     let allTd = document.querySelectorAll("td");
-     if (allTd.length == 9) {
-          creerSectionVide();
-     }
-
      let nouvelleDestination = document.getElementById("nouvelleDestination");
      nouvelleDestination.addEventListener("click", () => {
           let totalDestinations = Object.keys(destinations).length;
@@ -22,19 +11,24 @@ function test() {
                "nouvelleReservation"
           ).value;
 
-          let nouvelleDestination = {
-               pays: pays,
-               tarif: tarif,
-               reservation: reservation,
-          };
+          if (pays == "" || tarif == "" || reservation == "") {
+               alert("Veuillez remplir tous les champs");
+          } else {
+               let nouvelleDestination = {
+                    pays: pays,
+                    tarif: tarif,
+                    reservation: reservation,
+               };
 
-          nettoyerFormulaire();
+               nettoyerFormulaire();
 
-          destinations[`destination${totalDestinations - 1}`] =
-               nouvelleDestination;
+               destinations[`destination${totalDestinations - 1}`] =
+                    nouvelleDestination;
 
-          creerNouvelleSection();
+               creerNouvelleSection();
+          }
      });
+     affecterLesBoutons();
 }
 
 function previewFiles(id) {
@@ -57,12 +51,13 @@ function previewFiles(id) {
      }
 }
 
+// ----------------- FORMULAIRE ----------------- //
+
 function creerTableau() {
      let totalDestinations = Object.keys(destinations).length;
 
      let tr = document.createElement("tr");
-     if (sombreOuClaire() != "sombre") tr.className = "sombre";
-     tr.id = `destination${totalDestinations}`;
+     tr.id = `destination${totalDestinations - 1}`;
 
      let tdPays = document.createElement("td");
      let tdCircuit = document.createElement("td");
@@ -71,8 +66,19 @@ function creerTableau() {
      let tdBoutons = document.createElement("td");
 
      let img = document.createElement("img");
-     let boutons = document.createElement("button");
-     boutons.textContent = "Supprimer";
+     let boutonSupprimer = document.createElement("button");
+     let boutonEditer = document.createElement("button");
+     let imgSupprimer = document.createElement("img");
+     let imgEditer = document.createElement("img");
+
+     boutonSupprimer.value = "Supprimer";
+     boutonEditer.value = "Editer";
+     boutonSupprimer.className = "supprimer";
+     boutonEditer.className = "editer";
+     imgSupprimer.src = "images/delete.png";
+     imgEditer.src = "images/editer.png";
+     imgSupprimer.className = "form";
+     imgEditer.className = "form";
 
      tdPays.setAttribute("id", "pays");
      tdCircuit.setAttribute("id", "circuit");
@@ -80,8 +86,11 @@ function creerTableau() {
      tdTarif.setAttribute("id", "tarif");
      tdReservation.setAttribute("id", "reservation");
 
+     boutonSupprimer.append(imgSupprimer);
+     boutonEditer.append(imgEditer);
      tdCircuit.append(img);
-     tdBoutons.append(boutons);
+     tdBoutons.append(boutonSupprimer);
+     tdBoutons.append(boutonEditer);
      tr.append(tdPays);
      tr.append(tdCircuit);
      tr.append(tdTarif);
@@ -98,32 +107,10 @@ function creerNouvelleSection() {
      afficherPays();
      afficherTarif();
      afficherReservation();
-
-     let boutons = document.querySelectorAll("button");
-     console.log(boutons);
-     for (let i = 0; i < boutons.length; i++) {
-          boutons[i].addEventListener("click", () => {
-               supprimerDestination(`destination${i}`);
-          });
-     }
+     affecterLesBoutons();
+     unNoirSurDeux();
 
      previewFiles(`#circuit_${totalDestinations}`);
-}
-
-function creerSectionVide() {
-     creerTableau();
-     let allTdPays = document.querySelectorAll("#pays");
-     let allTdTarif = document.querySelectorAll("#tarif");
-     let allTdReservation = document.querySelectorAll("#reservation");
-
-     for (let i = 0; i < allTdPays.length; i++) {
-          allTdPays[i].textContent = "XXXXXXX";
-          allTdTarif[i].textContent = "XXXXX XXXXX XXXXX XXXXX";
-          allTdReservation[i].textContent = "XXXX";
-     }
-     afficherPays();
-     afficherTarif();
-     afficherReservation();
 }
 
 function supprimerDestination(id) {
@@ -131,11 +118,45 @@ function supprimerDestination(id) {
      elementASupprimer.remove();
 }
 
+function editerDestination(id) {
+     let pays = prompt("Pays");
+     let tarif = prompt("Tarif");
+     let reservation = prompt("Reservation");
+
+     destinations[id].pays = pays;
+     destinations[id].tarif = tarif;
+     destinations[id].reservation = reservation;
+
+     afficherPays();
+     afficherTarif();
+     afficherReservation();
+
+     unNoirSurDeux();
+}
+
 function nettoyerFormulaire() {
      document.getElementById("nouveauPays").value = "";
      document.getElementById("nouveauTarif").value = "";
      document.getElementById("nouvelleReservation").value = "";
 }
+
+function affecterLesBoutons() {
+     let boutonsSupprimer = document.querySelectorAll(".supprimer");
+     let boutonsEditer = document.querySelectorAll(".editer");
+     for (let i = 0; i < boutonsSupprimer.length; i++) {
+          boutonsSupprimer[i].setAttribute("id", `destination${i}`);
+          boutonsSupprimer[i].setAttribute("id", `destination${i}`);
+
+          boutonsSupprimer[i].addEventListener("click", () => {
+               supprimerDestination(`destination${i}`);
+          });
+          boutonsEditer[i].addEventListener("click", () => {
+               editerDestination(`destination${i}`);
+          });
+     }
+}
+
+// ----------------- AFFICHAGE DES DONNEES ----------------- //
 
 function afficherPays() {
      let pays = document.querySelectorAll("#pays");
@@ -181,14 +202,24 @@ function afficherReservation() {
      }
 }
 
-function sombreOuClaire() {
-     let allTr = document.querySelectorAll("tr");
-     if (
-          allTr[allTr.length - 2].className == "sombre" ||
-          allTr[allTr.length - 2].className == "header"
-     ) {
-          return "sombre";
-     } else {
-          return "claire";
+function unNoirSurDeux() {
+     let allTr = document.querySelectorAll("table#table > tbody > tr");
+     console.log(allTr);
+     for (let i = 1; i < allTr.length; i++) {
+          if (i % 2 == 0) {
+               if (
+                    allTr[i].className != "header" ||
+                    allTr[i].className != "form"
+               ) {
+                    allTr[i].className = "sombre";
+               }
+          } else {
+               if (
+                    allTr[i].className != "header" ||
+                    allTr[i].className != "form"
+               ) {
+                    allTr[i].className = "";
+               }
+          }
      }
 }

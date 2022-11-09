@@ -1,8 +1,15 @@
 table {
-    display: block;
     width: 90%;
     margin: 0 auto;
     border-collapse: collapse;
+}
+
+tbody {
+    width: 100%;
+}
+
+table tr.header {
+    width: 100%;
 }
 
 table tr.header td {
@@ -36,6 +43,9 @@ img {
 }
 
 form {
+    border: 2px solid black;
+    padding: 15px;
+    border-radius: 10px;
     width: 90%;
     margin: 0 auto;
 }
@@ -59,10 +69,28 @@ form table tr td {
     border-bottom: none;
 }
 
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+img {
+    width: 100%;
+    height: 20vh;
+}
+
+img.form {
+    width: 100%;
+    height: 4vh;
+}
+
 input.submit {
     width: 35%;
     cursor: pointer;
     transition: 0.3s ease-in-out;
+    background-color: lightgrey;
+    text-align: center;
 }
 
 input.submit:hover {
