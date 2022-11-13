@@ -39,6 +39,10 @@ li a {
     font-weight: bold;
 }
 
+li a:active {
+    color: #343434;
+}
+
 .sous-menu {
     display: none;
     box-shadow: 0px 1px 2px #CCC;

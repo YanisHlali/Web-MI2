@@ -7,6 +7,13 @@ table {
     border-collapse: collapse;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 75px;
+    border-top: 3px solid black;
+}
+
+tr:hover,tr:nth-child(even):hover {
+    background-color: lightgrey;
+    cursor: pointer;
 }
 
 table tr.header td {
@@ -16,6 +23,7 @@ table tr.header td {
     font-family: "Roboto", sans-serif;
     font-size: 25px;
     text-decoration: underline;
+    background-color: lightgrey;
 }
 
 tr:nth-child(even) {
