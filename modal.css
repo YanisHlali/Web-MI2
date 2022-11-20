@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #131416;
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    color: black;
+}
+
+.modal {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(77, 77, 77, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal:target {
+    visibility: visible;
+}
+
+.modal_content {
+    background-color: white;
+    padding: 1.5em;
+    width: 500px;
+    max-width: 90%;
+    border-radius: 4px;
+    position: relative;
+}
+
+.modal_close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: grey;
+    cursor: pointer;
+}
+
+input {
+    width: 100%;
+    height: 30px;
+    font-size: 15px;
+    font-family: "Roboto", sans-serif;
+    padding: 5px;
+    border: 2px solid black;
+    outline: none;
+    border-radius: 5px;
+    margin: 5px;
+    width: 150px;
+}
+
+.inputs {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid red;
+}
+
+input.modal-submit {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background-color: #343434;
+    color: white;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .inputs {
+        flex-direction: column;
+    }
+
+    .inputs input {
+        width: 90%;
+    }
+}

@@ -21,6 +21,11 @@ input {
     border-right: none; 
     border-bottom: 3px solid black;
     outline: none;
+    color: black;
+}
+
+input.bas {
+    margin-top: 20px;
 }
 
 div.textarea {
@@ -47,4 +52,26 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: black;
     color: white;
+}
+
+
+@media (max-width: 650px) {
+    .moitie-gauche, .moitie-droite {
+        display: block;
+        width: 100%;
+    }
+    input {
+        font-size: 15px;
+        margin-top: 10px;
+    }
+    input.bas {
+        margin-top: 10px;
+    }
+    div.textarea {
+        width: 90%;
+        margin: 0 auto;
+    }
+    textarea {
+        width: 90%;
+    }
 }

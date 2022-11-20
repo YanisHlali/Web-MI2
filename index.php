@@ -1,3 +1,25 @@
+<?php
+
+$login_normal = "user";
+$login_admin = "admin";
+$role = "";
+$password = "ajax";
+$successConnexion = true;
+
+if (isset($_POST['login']) && isset($_POST['password'])) {
+    if ($_POST['login'] == $login_normal && $_POST['password'] == $password) {
+        session_start();
+        $_SESSION['user'] = $login_normal;
+        $successConnexion = true;
+        $role = "user";
+    } else if ($_POST['login'] == $login_admin && $_POST['password'] == $password) {
+        session_start();
+        $_SESSION['user'] = $login_admin;
+        $successConnexion = true;
+        $role = "admin";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -9,22 +31,34 @@
     <link rel="stylesheet" href="./menu.css">
   </head>
   <body>
-    <nav class="menu">
-      <ul>
-        <li class="menu"><a class="page_actuelle" href="../index.html">Accueil</a></li>
-        <li class="menu"><a href="perso/perso.html">Espace perso</a>
-          <ul class="sous-menu">
-            <li class="sous-menu"><a href="#">Connexion</a></li>
-            <li class="sous-menu"><a href="#">Mes informations</a></li>
-            <li class="sous-menu"><a href="#">Messagerie</a></li>
-            <li class="sous-menu"><a href="#">Historique</a></li>
-          </ul></li>
-        <li class="menu"><a href="destinations/destinations.html">Destinations</a></li>
-        <li class="menu"><a href="voyage_virtuel_audio/voyage_virtuel_audio.html">Voyage virtuel audio</a></li>
-        <li class="menu"><a href="voyage_virtuel_video/voyage_virtuel_video.html">Voyage virtuel vidéo</a></li>
-        <li class="menu"><a href="contact/contact.html">Contact</a></li>
-      </ul>
-    </nav>
+    <?php if ($successConnexion == false) {
+      echo  "<script>alert(\"Connexion echoué\")</script>";
+    }
+      ?>
+    <header id="navbar" class="nav">
+      <a class="page_actuelle" href="../index.html">Accueil</a>
+      <div class="dropdown-1">
+          <button><a href="perso/perso.html">Espace perso</a></button>
+          <div class="content">
+              <a href="#">Connexion</a>
+              <a href="#">Mes informations</a>
+              <a href="#">Messagerie</a>
+              <a href="#">Historique</a>
+          </div>
+      </div>
+      <a href="destinations/destinations.html">Destinations</a>
+      <a href="voyage_virtuel_audio/voyage_virtuel_audio.html">Voyage virtuel audio</a>
+      <a href="voyage_virtuel_video/voyage_virtuel_video.html">Voyage virtuel vidéo</a>
+      <a href="contact/contact.html">Contact</a>
+      <a href="modal.html#modal">
+        <?php if ($successConnexion) {
+    echo "Connecté en tant " . $_SESSION['user'];
+} else {
+    echo "Connexion";
+}
+?></a>
+      <a class="icon" onclick="myFunction()">&#9776;</a>
+  </header>
     <div class="div-container">
       <h2>Description générale</h2>
       <div class="div-container-paragraphe">
@@ -70,4 +104,5 @@
     </div>
     <br /><br /><br /><br /><br /><br />
   </body>
+  <script src="menu.js"></script>
 </html>

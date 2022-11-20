@@ -1,5 +1,5 @@
 video {
-    width: 33%;
+    width: 50%;
     height: auto;
 }
 
@@ -33,4 +33,22 @@ video {
 
 #border-right-seperator {
     border-right: 4px solid #343434;
+}
+
+@media (max-width: 850px) {
+    .videos {
+        width: 100%;
+    }
+    .video video {
+        width: 90%;
+    }
+}
+
+@media (max-width: 650px) {
+    .video {
+        width: 100%;
+    }
+    #border-right-seperator {
+        border-right: none;
+    }
 }

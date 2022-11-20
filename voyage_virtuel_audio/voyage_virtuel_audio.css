@@ -34,3 +34,18 @@
 #border-right-seperator {
     border-right: 4px solid #343434;
 }
+
+@media (max-width: 850px) {
+    .audios {
+        width: 100%;
+    }
+}
+
+@media (max-width: 650px) {
+    .audio {
+        width: 100%;
+    }
+    #border-right-seperator {
+        border-right: none;
+    }
+}

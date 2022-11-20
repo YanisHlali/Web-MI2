@@ -25,10 +25,71 @@ function test() {
                destinations[`destination${totalDestinations - 1}`] =
                     nouvelleDestination;
 
-               creerNouvelleSection();
+               // creerNouvelleSection();
+               let allWidgets = document.querySelectorAll(".widgets");
+               console.log(allWidgets[allWidgets.length - 1].childNodes.length);
+               creerWidget();
+               affecterLesBoutons();
           }
      });
      affecterLesBoutons();
+}
+
+function creerWidgetContainer() {
+     let divWidgets = document.createElement("div");
+     divWidgets.className = "widgets";
+
+     let allWidgets = document.querySelectorAll(".widgets");
+     allWidgets[allWidgets.length - 1].after(divWidgets);
+}
+
+function creerWidget() {
+     let allWidget = document.querySelectorAll(".widget");
+     let totalWidget = allWidget.length;
+     console.log(totalWidget);
+     let totalDestinations = Object.keys(destinations).length;
+
+     let divWidget = document.createElement("div");
+     divWidget.className = "widget";
+
+     let title = document.createElement("h1");
+     title.innerHTML = `Destination n°${totalWidget + 1}`;
+
+     let img = document.createElement("img");
+     img.src = "";
+     img.setAttribute("id", `circuit_${totalDestinations}`);
+
+     let description = document.createElement("p");
+     description.innerHTML =
+          "· Espagne <br />· Circuit plage, hôtel 4*, Lorem ipsum <br />· 800 €";
+
+     let divBoutons = document.createElement("div");
+     divBoutons.className = "boutons";
+
+     let deleteButton = document.createElement("button");
+     deleteButton.className = "delete";
+     let deleteImg = document.createElement("img");
+     deleteImg.src = "images/delete.png";
+     deleteButton.append(deleteImg);
+
+     let editButton = document.createElement("button");
+     editButton.className = "edit";
+     let editImg = document.createElement("img");
+     editImg.src = "images/editer.png";
+     editButton.append(editImg);
+
+     divBoutons.append(deleteButton);
+     divBoutons.append(editButton);
+
+     divWidget.append(title);
+     divWidget.append(img);
+     divWidget.append(description);
+     divWidget.append(divBoutons);
+
+     let allWidgets = document.querySelectorAll(".widgets");
+     allWidgets[allWidgets.length - 1].appendChild(divWidget);
+
+     previewFiles(`#circuit_${totalDestinations}`);
 }
 
 function previewFiles(id) {
@@ -51,87 +112,34 @@ function previewFiles(id) {
      }
 }
 
-// ----------------- FORMULAIRE ----------------- //
-
-function creerTableau() {
-     let totalDestinations = Object.keys(destinations).length;
-
-     let tr = document.createElement("tr");
-     tr.id = `destination${totalDestinations - 1}`;
-
-     let tdPays = document.createElement("td");
-     let tdCircuit = document.createElement("td");
-     let tdTarif = document.createElement("td");
-     let tdReservation = document.createElement("td");
-     let tdBoutons = document.createElement("td");
-
-     let img = document.createElement("img");
-     let boutonSupprimer = document.createElement("button");
-     let boutonEditer = document.createElement("button");
-     let imgSupprimer = document.createElement("img");
-     let imgEditer = document.createElement("img");
-
-     boutonSupprimer.value = "Supprimer";
-     boutonEditer.value = "Editer";
-     boutonSupprimer.className = "supprimer";
-     boutonEditer.className = "editer";
-     imgSupprimer.src = "images/delete.png";
-     imgEditer.src = "images/editer.png";
-     imgSupprimer.className = "form";
-     imgEditer.className = "form";
-
-     tdPays.setAttribute("id", "pays");
-     tdCircuit.setAttribute("id", "circuit");
-     img.setAttribute("id", `circuit_${totalDestinations}`);
-     tdTarif.setAttribute("id", "tarif");
-     tdReservation.setAttribute("id", "reservation");
-
-     boutonSupprimer.append(imgSupprimer);
-     boutonEditer.append(imgEditer);
-     tdCircuit.append(img);
-     tdBoutons.append(boutonSupprimer);
-     tdBoutons.append(boutonEditer);
-     tr.append(tdPays);
-     tr.append(tdCircuit);
-     tr.append(tdTarif);
-     tr.append(tdReservation);
-     tr.append(tdBoutons);
-
-     document.querySelector("tbody").appendChild(tr);
-}
-
-function creerNouvelleSection() {
-     let totalDestinations = Object.keys(destinations).length;
-
-     creerTableau();
-     afficherPays();
-     afficherTarif();
-     afficherReservation();
-     affecterLesBoutons();
-     unNoirSurDeux();
-
-     previewFiles(`#circuit_${totalDestinations}`);
-}
-
 function supprimerDestination(id) {
      let elementASupprimer = document.getElementById(id);
-     elementASupprimer.remove();
+     elementASupprimer.parentElement.parentElement.remove();
+     // elementASupprimer.remove();
 }
 
 function editerDestination(id) {
+     console.log(id);
+     let p = document.querySelector(`#${id}`).parentElement.parentElement
+          .childNodes[2];
      let pays = prompt("Pays");
      let tarif = prompt("Tarif");
      let reservation = prompt("Reservation");
 
-     destinations[id].pays = pays;
-     destinations[id].tarif = tarif;
-     destinations[id].reservation = reservation;
+     // destinations[id].pays = pays;
+     // destinations[id].tarif = tarif;
+     // destinations[id].reservation = reservation;
 
-     afficherPays();
-     afficherTarif();
-     afficherReservation();
+     p.innerText = `\n· ${pays} \n· ${tarif} \n· ${reservation}`;
 
-     unNoirSurDeux();
+     // document.querySelector(`#${id}`).parentElement.parentElement.textContent =
+     //      text;
+
+     // afficherPays();
+     // afficherTarif();
+     // afficherReservation();
+
+     // unNoirSurDeux();
 }
 
 function nettoyerFormulaire() {
@@ -141,8 +149,8 @@ function nettoyerFormulaire() {
 }
 
 function affecterLesBoutons() {
-     let boutonsSupprimer = document.querySelectorAll(".supprimer");
-     let boutonsEditer = document.querySelectorAll(".editer");
+     let boutonsSupprimer = document.querySelectorAll(".delete");
+     let boutonsEditer = document.querySelectorAll(".edit");
      for (let i = 0; i < boutonsSupprimer.length; i++) {
           boutonsSupprimer[i].setAttribute("id", `destination${i}`);
           boutonsSupprimer[i].setAttribute("id", `destination${i}`);
@@ -153,73 +161,5 @@ function affecterLesBoutons() {
           boutonsEditer[i].addEventListener("click", () => {
                editerDestination(`destination${i}`);
           });
-     }
-}
-
-// ----------------- AFFICHAGE DES DONNEES ----------------- //
-
-function afficherPays() {
-     let pays = document.querySelectorAll("#pays");
-
-     let paysReservation = [];
-
-     for (let i = 0; i < pays.length; i++) {
-          console.log(destinations);
-          paysReservation.push(destinations[`destination${i}`].pays);
-     }
-     for (let i = 0; i < paysReservation.length; i++) {
-          pays[i].textContent = paysReservation[i];
-     }
-}
-
-function afficherTarif() {
-     let tarif = document.querySelectorAll("#tarif");
-
-     let tarifReservation = [];
-
-     for (let i = 0; i < tarif.length; i++) {
-          tarifReservation.push(destinations[`destination${i}`].tarif);
-     }
-
-     for (let i = 0; i < tarifReservation.length; i++) {
-          tarif[i].textContent = tarifReservation[i];
-     }
-}
-
-function afficherReservation() {
-     let reservation = document.querySelectorAll("#reservation");
-
-     let reservationReservation = [];
-
-     for (let i = 0; i < reservation.length; i++) {
-          reservationReservation.push(
-               destinations[`destination${i}`].reservation
-          );
-     }
-
-     for (let i = 0; i < reservationReservation.length; i++) {
-          reservation[i].textContent = reservationReservation[i];
-     }
-}
-
-function unNoirSurDeux() {
-     let allTr = document.querySelectorAll("table#table > tbody > tr");
-     console.log(allTr);
-     for (let i = 1; i < allTr.length; i++) {
-          if (i % 2 == 0) {
-               if (
-                    allTr[i].className != "header" ||
-                    allTr[i].className != "form"
-               ) {
-                    allTr[i].className = "sombre";
-               }
-          } else {
-               if (
-                    allTr[i].className != "header" ||
-                    allTr[i].className != "form"
-               ) {
-                    allTr[i].className = "";
-               }
-          }
      }
 }
